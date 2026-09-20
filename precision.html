@@ -63,10 +63,10 @@
     <p class="brand">PRE<span>CIS</span>ION</p>
     <p class="sub">Politique de confidentialité · Privacy policy · Política de privacidad · Política de privacidade · プライバシーポリシー · 개인정보처리방침</p>
     <div class="langues">
-      <button type="button" data-l="fr" aria-pressed="true">FR</button>
-      <button type="button" data-l="en" aria-pressed="false">EN</button>
-      <button type="button" data-l="es" aria-pressed="false">ES</button>
-      <button type="button" data-l="pt" aria-pressed="false">PT</button>
+      <button type="button" data-l="fr" aria-pressed="true">Français</button>
+      <button type="button" data-l="en" aria-pressed="false">English</button>
+      <button type="button" data-l="es" aria-pressed="false" title="Español (Latinoamérica)">Español (LA)</button>
+      <button type="button" data-l="pt" aria-pressed="false" title="Português (Brasil)">Português (BR)</button>
       <button type="button" data-l="ja" aria-pressed="false">日本語</button>
       <button type="button" data-l="ko" aria-pressed="false">한국어</button>
     </div>
@@ -733,6 +733,11 @@
       if(boutons[l])  boutons[l].setAttribute('aria-pressed', String(l === lang));
     });
     document.documentElement.lang = lang;
+    // Le titre de l'onglet suit lui aussi : c'est ce que le lecteur voit
+    // dans ses favoris, dans son historique et dans les résultats de
+    // recherche.
+    var titre = sections[lang] && sections[lang].querySelector('h1');
+    if(titre) document.title = 'PRECISION — ' + titre.textContent;
   }
 
   LANGUES.forEach(function(l){
